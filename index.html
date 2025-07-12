@@ -6,44 +6,79 @@
   <title>Resolve</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-  body {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    padding: 20px;
-    /* Adicione esta linha para a cor de fundo */
-    background-color: #418c60;
-    /* Se o conteúdo for pequeno e quiser que o fundo ocupe toda a altura */
-    min-height: 100vh; /* Garante que o body ocupa pelo menos 100% da altura da viewport */
-    margin: 0; /* Remove margens padrão do body */
-    display: flex; /* Para centralizar o conteúdo verticalmente */
-    flex-direction: column; /* Para organizar o conteúdo em coluna */
-    justify-content: center; /* Para centralizar verticalmente */
-    align-items: center; /* Para centralizar horizontalmente */
-  }
-  .cta {
-    display: inline-block;
-    background-color: #418c60; /* Isto é para o botão, não para o fundo da página */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-  }
-  footer {
-    margin-top: 2rem;
-    color: #666;
-    font-size: 0.9rem;
-  }
-</style>
+    :root {
+      --verde: #418c60;
+      --azul-escuro: #1a1443;
+      --branco: #ffffff;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background: linear-gradient(160deg, var(--verde), #3a7854);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--branco);
+    }
+
+    img {
+      width: 180px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      color: var(--azul-escuro);
+    }
+
+    .cta {
+      background-color: var(--branco);
+      color: var(--azul-escuro);
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .cta {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <img src="Logo-Resolve-4.jpg" alt="Resolve Logo" style="width: 200px; margin-bottom: 1rem;" />
+  <img src="Logo-Resolve-azul-branco.png" alt="Resolve Logo" />
   <h2>Menos ruído. Mais estrutura.</h2>
-
   <a class="cta" href="mailto:geral@resolveconsulting.pro">Fala connosco</a>
-
-  <footer>
-    &copy; 2025 Resolve Consulting
-  </footer>
+  <footer>&copy; 2025 Resolve Consulting</footer>
 </body>
 </html>
