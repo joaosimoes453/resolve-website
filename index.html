@@ -23,7 +23,7 @@
     nav {
       width: 100%;
       max-width: 900px;
-      margin: 0 auto 2rem auto;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
@@ -72,8 +72,28 @@
     }
 
     @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      img {
+        width: 150px;
+      }
+
       h2 {
         font-size: 1.2rem;
+        padding: 0 1rem;
+      }
+
+      .cta {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 16px;
       }
     }
   </style>
