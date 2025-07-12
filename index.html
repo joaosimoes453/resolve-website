@@ -6,79 +6,96 @@
   <title>Resolve</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --verde: #418c60;
-      --azul-escuro: #1a1443;
-      --branco: #ffffff;
-    }
-
     body {
       font-family: 'Montserrat', sans-serif;
       text-align: center;
-      padding: 20px;
+      background-color: #418c60;
+      color: #ffffff;
       margin: 0;
-      background: linear-gradient(160deg, var(--verde), #3a7854);
+      padding: 2rem;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: var(--branco);
+    }
+
+    nav {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e0e0e0;
+      text-decoration: underline;
     }
 
     img {
-      width: 180px;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
+      width: 200px;
+      margin-bottom: 1rem;
     }
 
     h2 {
-      font-size: 1.8rem;
-      font-weight: 500;
+      color: #1a1443;
+      font-size: 1.5rem;
       margin-bottom: 2rem;
-      color: var(--azul-escuro);
     }
 
     .cta {
-      background-color: var(--branco);
-      color: var(--azul-escuro);
-      padding: 12px 28px;
-      font-weight: 600;
-      border-radius: 8px;
+      background-color: #ffffff;
+      color: #1a1443;
+      padding: 10px 20px;
       text-decoration: none;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s;
     }
 
     .cta:hover {
-      background-color: #f0f0f0;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      background-color: #e0e0e0;
     }
 
     footer {
       margin-top: 3rem;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: #ffffffb3;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 600px) {
       h2 {
-        font-size: 1.4rem;
-      }
-
-      .cta {
-        font-size: 0.95rem;
-        padding: 10px 20px;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Menu de Navegação -->
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="mailto:geral@resolveconsulting.pro">Contacto</a>
+  </nav>
+
+  <!-- Conteúdo principal -->
   <img src="Logo-Resolve-azul-branco.png" alt="Resolve Logo" />
   <h2>Menos ruído. Mais estrutura.</h2>
   <a class="cta" href="mailto:geral@resolveconsulting.pro">Fala connosco</a>
-  <footer>&copy; 2025 Resolve Consulting</footer>
+
+  <footer>
+    &copy; 2025 Resolve Consulting
+  </footer>
+
 </body>
 </html>
