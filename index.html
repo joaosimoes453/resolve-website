@@ -6,27 +6,35 @@
   <title>Resolve</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Your CSS styles would go here */
-    body {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .cta {
-      display: inline-block;
-      background-color: #418c60;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-    }
-    footer {
-      margin-top: 2rem;
-      color: #666;
-      font-size: 0.9rem;
-    }
-  </style>
+  body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 20px;
+    /* Adicione esta linha para a cor de fundo */
+    background-color: #418c60;
+    /* Se o conteúdo for pequeno e quiser que o fundo ocupe toda a altura */
+    min-height: 100vh; /* Garante que o body ocupa pelo menos 100% da altura da viewport */
+    margin: 0; /* Remove margens padrão do body */
+    display: flex; /* Para centralizar o conteúdo verticalmente */
+    flex-direction: column; /* Para organizar o conteúdo em coluna */
+    justify-content: center; /* Para centralizar verticalmente */
+    align-items: center; /* Para centralizar horizontalmente */
+  }
+  .cta {
+    display: inline-block;
+    background-color: #418c60; /* Isto é para o botão, não para o fundo da página */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  footer {
+    margin-top: 2rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>
 </head>
 <body>
   <img src="Logo-Resolve-4.jpg" alt="Resolve Logo" style="width: 200px; margin-bottom: 1rem;" />
