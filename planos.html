@@ -40,7 +40,7 @@
 
     main {
       padding: 2rem;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: auto;
     }
 
@@ -52,19 +52,16 @@
     }
 
     .planos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
     }
 
     .plano {
       background-color: #ffffff;
       color: #1a1443;
       border-radius: 8px;
-      padding: 2rem;
-      flex: 1 1 250px;
-      max-width: 280px;
+      padding: 1.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
@@ -72,7 +69,7 @@
     }
 
     .plano h2 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-bottom: 1rem;
       color: #1a1443;
     }
@@ -80,32 +77,30 @@
     .plano ul {
       list-style: disc;
       padding-left: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 0.95rem;
     }
 
     .plano li {
       margin-bottom: 0.5rem;
-      font-size: 0.95rem;
     }
 
     .cta {
       text-align: center;
-      margin-top: auto;
+      margin-top: 3rem;
     }
 
     .cta a {
-      background-color: #418c60;
-      color: #ffffff;
-      padding: 0.6rem 1.2rem;
-      border-radius: 5px;
+      background-color: #ffffff;
+      color: #1a1443;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      display: inline-block;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
 
     .cta a:hover {
-      background-color: #36724f;
+      background-color: #eaeaea;
     }
 
     footer {
@@ -116,10 +111,33 @@
       padding-bottom: 2rem;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 1200px) {
       .planos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .planos {
+        grid-template-columns: 1fr;
+      }
+
+      .plano {
+        max-width: 100%;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      header {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
       }
     }
   </style>
@@ -140,7 +158,6 @@
     <h1>Planos à tua medida</h1>
 
     <div class="planos">
-
       <div class="plano">
         <h2>Organiza-me</h2>
         <ul>
@@ -149,7 +166,6 @@
           <li>Implementação de ferramentas básicas (folhas de cálculo, checklists)</li>
           <li>Apoio inicial para estruturar o teu dia a dia com clareza</li>
         </ul>
-        <div class="cta"><a href="mailto:geral@resolveconsulting.pro">Fala connosco</a></div>
       </div>
 
       <div class="plano">
@@ -160,7 +176,6 @@
           <li>Introdução a ferramentas digitais (Notion, CRM, Trello)</li>
           <li>Apoio na delegação e acompanhamento de tarefas</li>
         </ul>
-        <div class="cta"><a href="mailto:geral@resolveconsulting.pro">Fala connosco</a></div>
       </div>
 
       <div class="plano">
@@ -171,7 +186,6 @@
           <li>Planeamento a médio e longo prazo</li>
           <li>Apoio direto ao fundador nas decisões críticas</li>
         </ul>
-        <div class="cta"><a href="mailto:geral@resolveconsulting.pro">Fala connosco</a></div>
       </div>
 
       <div class="plano">
@@ -182,9 +196,11 @@
           <li>Criação de processos adaptados à fase inicial</li>
           <li>Consultoria flexível, ajustada às necessidades do momento</li>
         </ul>
-        <div class="cta"><a href="mailto:geral@resolveconsulting.pro">Fala connosco</a></div>
       </div>
+    </div>
 
+    <div class="cta">
+      <a href="mailto:geral@resolveconsulting.pro">Fala connosco</a>
     </div>
   </main>
 
