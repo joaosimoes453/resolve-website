@@ -218,5 +218,20 @@
     &copy; 2025 Resolve Consulting
   </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const contatoBtn = document.querySelector('.cta');
+    
+    if (contatoBtn) {
+      contatoBtn.addEventListener('click', function () {
+        gtag('event', 'click', {
+          event_category: 'CTA',
+          event_label: 'Vamos pôr isto a andar'
+        });
+      });
+    }
+  });
+</script>
+  
 </body>
 </html>
