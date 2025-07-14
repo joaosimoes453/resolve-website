@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre • Resolve</title>
+  <title>Sobre a Resolve • Consultoria para Startups e PMEs</title>
+  <meta name="description" content="A Resolve apoia fundadores que querem sair do caos e estruturar o seu negócio com clareza, leveza e visão estratégica." />
   <link rel="icon" href="web-app-manifest-192x192.png" type="image/png" />
-<!-- Google tag (gtag.js) -->
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="e3844023-8dc0-40ca-8453-be49bd164fe3" type="text/javascript" async></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HHFRBSM16"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-0HHFRBSM16');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HHFRBSM16"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0HHFRBSM16');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -133,15 +134,15 @@
 <body>
 
   <header>
-  <a href="index.html">
-    <img src="Logo-Resolve-azul-branco.png" alt="Resolve Logo" style="display: block;">
-  </a>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="servicos.html">Serviços</a>
-    <a href="planos.html">Planos</a>
-  </nav>
-</header>
+    <a href="index.html">
+      <img src="Logo-Resolve-azul-branco.png" alt="Resolve Logo" style="display: block;">
+    </a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="planos.html">Planos</a>
+    </nav>
+  </header>
 
   <main>
     <h1>Sobre a Resolve</h1>
@@ -154,16 +155,16 @@
     <section class="section">
       <h2>Valores</h2>
       <ul>
-        <li>Clareza – menos ruído, mais foco</li>
-        <li>Autonomia – equipas que decidem com confiança</li>
-        <li>Estrutura – sistemas simples, que funcionam</li>
-        <li>Humanidade – relações honestas e com cuidado</li>
+        <li><strong>Clareza</strong> – menos ruído, mais foco</li>
+        <li><strong>Autonomia</strong> – equipas que decidem com confiança</li>
+        <li><strong>Estrutura</strong> – sistemas simples, que funcionam</li>
+        <li><strong>Humanidade</strong> – relações honestas e com cuidado</li>
       </ul>
     </section>
 
     <section class="section">
       <h2>A nossa história</h2>
-      <p style="text-align: justified">A Resolve nasceu da vontade de apoiar líderes e fundadores que se veem atolados na operação e na urgência do dia a dia. Criámos a Resolve para trazer estrutura, clareza e leveza ao trabalho – ajudando quem lidera a sair do caos e voltar a pensar no futuro.</p>
+      <p>A Resolve nasceu da vontade de apoiar líderes e fundadores que se veem atolados na operação e na urgência do dia a dia. Criámos a Resolve para trazer estrutura, clareza e leveza ao trabalho – ajudando quem lidera a sair do caos e voltar a pensar no futuro.</p>
     </section>
 
     <div class="quote">
@@ -173,8 +174,8 @@
     <div style="text-align: center; margin-top: 3rem;">
       <a class="cta" href="mailto:geral@resolveconsulting.pro">Vamos pôr isto a andar</a>
       <a href="https://www.linkedin.com/company/resolve-pt" target="_blank" style="color: #ffffffb3; text-decoration: none;">
-    <p>LinkedIn</p>
-  </a>
+        <p>LinkedIn</p>
+      </a>
     </div>
   </main>
 
@@ -183,18 +184,18 @@
   </footer>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const contatoBtn = document.querySelector('.cta');
-    
-    if (contatoBtn) {
-      contatoBtn.addEventListener('click', function () {
-        gtag('event', 'click', {
-          event_category: 'CTA',
-          event_label: 'Vamos pôr isto a andar'
+    document.addEventListener('DOMContentLoaded', function () {
+      const contatoBtn = document.querySelector('.cta');
+      if (contatoBtn) {
+        contatoBtn.addEventListener('click', function () {
+          gtag('event', 'click', {
+            event_category: 'CTA',
+            event_label: 'Vamos pôr isto a andar'
+          });
         });
-      });
-    }
-  });
-</script>
+      }
+    });
+  </script>
+
 </body>
 </html>
