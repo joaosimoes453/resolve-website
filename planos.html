@@ -58,7 +58,15 @@
       text-align: center;
       font-size: 2.5rem;
       color: #ffffff;
+      margin-bottom: 2rem;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ffffffcc;
       margin-bottom: 3rem;
+      line-height: 1.6;
     }
 
     .planos {
@@ -157,7 +165,7 @@
 <body>
 
   <header>
-    <a href="index.html"><img src="Logo-Resolve-azul-branco.png" alt="Resolve Logo"></a>
+    <a href="index.html"><img src="Logo-Resolve-azul-branco.png" alt="Logo da Resolve Consulting"></a>
     <nav>
       <a href="index.html">Início</a>
       <a href="sobre.html">Sobre</a>
@@ -166,7 +174,12 @@
   </header>
 
   <main>
-    <h1>Planos à tua medida</h1>
+    <h1>Planos de Consultoria Prática para Startups e PMEs</h1>
+
+    <p class="intro">
+      Escolhe o plano de consultoria que melhor se adapta à fase do teu negócio.  
+      Seja para organizar, estruturar ou escalar, temos uma solução à tua medida.
+    </p>
 
     <div class="planos">
       <div class="plano">
@@ -211,7 +224,7 @@
     </div>
 
     <div class="cta">
-      <a href="mailto:geral@resolveconsulting.pro">Vamos pôr isto a andar</a>
+      <a class="cta" href="mailto:geral@resolveconsulting.pro">Vamos pôr isto a andar</a>
     </div>
   </main>
 
@@ -219,20 +232,19 @@
     &copy; 2025 Resolve Consulting
   </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const contatoBtn = document.querySelector('.cta');
-    
-    if (contatoBtn) {
-      contatoBtn.addEventListener('click', function () {
-        gtag('event', 'click', {
-          event_category: 'CTA',
-          event_label: 'Vamos pôr isto a andar'
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const contatoBtn = document.querySelector('.cta');
+      if (contatoBtn) {
+        contatoBtn.addEventListener('click', function () {
+          gtag('event', 'click', {
+            event_category: 'CTA',
+            event_label: 'Vamos pôr isto a andar'
+          });
         });
-      });
-    }
-  });
-</script>
-  
+      }
+    });
+  </script>
+
 </body>
 </html>
