@@ -178,6 +178,41 @@
       }
     }
   </style>
+  <style>
+  .popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .popup {
+    background: white;
+    color: #1a1443;
+    padding: 2rem;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+  .popup h3 {
+    margin-top: 0;
+  }
+  .popup-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+    color: white;
+  }
+</style>
 </head>
 <body>
 
@@ -195,6 +230,29 @@
 </header>
 
   <main>
+    <div class="popup-overlay" id="organizaPopup">
+  <div class="popup">
+    <h3>Organiza-me</h3>
+    <p><strong>Serviços de organização prática e criação de rotinas simples, para dar estrutura ao teu dia a dia de gestão.</strong></p>
+    <p>O pacote <strong>Organiza-me</strong> foi criado para negócios em fase inicial, equipas pequenas ou fundadores que sentem que estão a apagar fogos todos os dias e precisam de ganhar clareza. O foco está em identificar onde estão os principais bloqueios, desenhar rotinas leves e criar bases operacionais que tragam ordem, foco e capacidade de execução.</p>
+    <ul>
+      <li>Avaliação do estado atual dos processos e rotinas, com identificação de pontos críticos e oportunidades de melhoria imediata;</li>
+      <li>Criação de rotinas práticas e ajustadas à realidade do negócio, com foco na simplicidade, recorrência e autonomia;</li>
+      <li>Implementação de ferramentas básicas e intuitivas, como folhas de cálculo partilhadas, modelos de checklists, sistemas de acompanhamento de tarefas e planeamento semanal;</li>
+      <li>Apoio à organização do trabalho do dia a dia, com sugestões de métodos para definir prioridades, acompanhar tarefas e reduzir a carga mental;</li>
+      <li>Entrega de materiais de apoio prontos a usar, para facilitar a implementação por parte da equipa.</li>
+    </ul>
+    <p><strong>Inclui também:</strong></p>
+    <ul>
+      <li>Sessão de diagnóstico inicial;</li>
+      <li>Sessões de trabalho presenciais ou remotas;</li>
+      <li>Entrega de ficheiros prontos a usar;</li>
+      <li>Disponibilidade para esclarecimentos pontuais ao longo do período de apoio.</li>
+    </ul>
+    <p><strong>Carga horária incluída:</strong> Até 10 horas de trabalho distribuídas ao longo de 3 semanas.</p>
+  </div>
+  <button class="popup-close" onclick="closePopup()">X</button>
+</div>
     <h1>Planos de Consultoria Prática para Startups e PMEs</h1>
 
     <p class="intro">
@@ -266,6 +324,22 @@
       }
     });
   </script>
+  <script>
+  const organizaCard = document.querySelectorAll(".plano h2");
+  const popup = document.getElementById("organizaPopup");
+
+  organizaCard.forEach((el) => {
+    if (el.textContent.includes("Organiza-me")) {
+      el.parentElement.addEventListener("click", () => {
+        popup.style.display = "flex";
+      });
+    }
+  });
+
+  function closePopup() {
+    popup.style.display = "none";
+  }
+</script>
 
 </body>
 </html>
