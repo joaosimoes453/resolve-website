@@ -296,6 +296,37 @@
       <li>Criação de pontos de controlo, para que a evolução do negócio seja acompanhada com ritmo, foco e responsabilidade partilhada.</li>
     </ul>
 
+    <div class="popup-overlay" id="lancaMePopup">
+  <div class="popup">
+    <h3>Lança-me</h3>
+    <p><strong>Consultoria prática e flexível para fundadores que estão a começar e precisam de apoio para estruturar a operação desde o zero.</strong></p>
+
+    <p>O pacote <strong>Lança-me</strong> é pensado para projetos em fase inicial — antes ou logo após o arranque — que precisam de definir os seus processos, ferramentas e rotinas com base nas necessidades reais do negócio, sem perder tempo com excesso de teoria ou complexidade.</p>
+
+    <p>Aqui, o foco é pôr o negócio a funcionar com clareza, rapidez e flexibilidade, criando bases sólidas para crescer de forma sustentável.</p>
+
+    <h4>Os serviços abrangem:</h4>
+    <ul>
+      <li><strong>Definição da operação desde o zero</strong>, com apoio na criação do modelo de funcionamento base (equipa, responsabilidades, fluxos, ferramentas);</li>
+      <li><strong>Planeamento detalhado e acompanhamento contínuo</strong>, com construção de agendas operacionais, marcos e prioridades por fase;</li>
+      <li><strong>Criação de processos adaptados à fase inicial</strong>, com base na realidade concreta do projeto e nas ferramentas mais leves e eficazes;</li>
+      <li><strong>Consultoria flexível</strong>, ajustada ao ritmo de cada negócio e com abertura para reajustar o plano à medida que o projeto evolui;</li>
+      <li><strong>Apoio ao fundador na tomada de decisões estruturais</strong>, organização de prioridades e gestão do tempo.</li>
+    </ul>
+
+    <h4>Inclui também:</h4>
+    <ul>
+      <li>Sessões de alinhamento regulares (semanais ou quinzenais);</li>
+      <li>Implementação inicial de ferramentas simples (ex.: Trello, Notion, Google Sheets);</li>
+      <li>Templates práticos e rotinas que ajudam a ganhar tração;</li>
+      <li>Disponibilidade para esclarecimentos entre sessões, via e-mail ou mensagens.</li>
+    </ul>
+
+    <p><strong>Carga horária incluída:</strong> Até 40 <strong>horas de trabalho</strong> por mês.</p>
+  </div>
+  <button class="popup-close" onclick="closeLancaPopup()">X</button>
+</div>
+
     <p><strong>Inclui também:</strong></p>
     <ul>
       <li>Reuniões semanais com o fundador e/ou equipa de gestão;</li>
@@ -428,6 +459,23 @@
 
   function closeResolvePopup() {
     resolvePopup.style.display = "none";
+  }
+</script>
+
+  <script>
+  const lancaCard = document.querySelectorAll(".plano h2");
+  const lancaPopup = document.getElementById("lancaMePopup");
+
+  lancaCard.forEach((el) => {
+    if (el.textContent.includes("Lança-me")) {
+      el.parentElement.addEventListener("click", () => {
+        lancaPopup.style.display = "flex";
+      });
+    }
+  });
+
+  function closeLancaPopup() {
+    lancaPopup.style.display = "none";
   }
 </script>
 
