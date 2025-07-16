@@ -279,6 +279,35 @@
   </div>
   <button class="popup-close" onclick="closeFazIstoAndarPopup()">X</button>
 </div>
+
+    <div class="popup-overlay" id="resolveMeIstoPopup">
+  <div class="popup">
+    <h3>Resolve-me Isto</h3>
+    <p><strong>Gestão integrada da operação, com apoio direto ao fundador nas decisões do dia a dia e na visão a médio e longo prazo.</strong></p>
+    <p>O pacote <strong>Resolve-me Isto</strong> destina-se a negócios que já estão em marcha, mas precisam de uma presença mais contínua, estruturada e estratégica para alinhar a operação, libertar o fundador e garantir que a empresa funciona com maior previsibilidade.</p>
+    <p>Este apoio combina organização prática com pensamento estratégico, sendo ideal para empresas que precisam de coordenação transversal — entre áreas, equipas e prioridades — com foco na estabilidade e crescimento sustentado.</p>
+    
+    <h4>Os serviços abrangem:</h4>
+    <ul>
+      <li>Gestão integrada das áreas operacionais e administrativas, com acompanhamento regular e proposta de rotinas, métricas e prioridades;</li>
+      <li>Análise de indicadores operacionais e financeiros, com leitura crítica de resultados e preparação de relatórios de apoio à decisão;</li>
+      <li>Planeamento a médio e longo prazo, com base em objetivos concretos e ciclos de execução bem definidos;</li>
+      <li>Apoio direto ao fundador na organização do seu tempo, na clarificação de decisões críticas e na definição de prioridades;</li>
+      <li>Criação de pontos de controlo, para que a evolução do negócio seja acompanhada com ritmo, foco e responsabilidade partilhada.</li>
+    </ul>
+
+    <p><strong>Inclui também:</strong></p>
+    <ul>
+      <li>Reuniões semanais com o fundador e/ou equipa de gestão;</li>
+      <li>Preparação de planos de ação, agendas operacionais e materiais de suporte;</li>
+      <li>Elaboração de relatórios de progresso e análise crítica de desvios;</li>
+      <li>Disponibilidade para suporte por e-mail ou mensagens entre reuniões.</li>
+    </ul>
+
+    <p><strong>Carga horária incluída:</strong> Até 30 horas de trabalho por mês.</p>
+  </div>
+  <button class="popup-close" onclick="closeResolvePopup()">X</button>
+</div>
     
     <h1>Planos de Consultoria Prática para Startups e PMEs</h1>
 
@@ -382,6 +411,23 @@
 
   function closeFazIstoAndarPopup() {
     fazIstoAndarPopup.style.display = "none";
+  }
+</script>
+
+  <script>
+  const resolveCard = document.querySelectorAll(".plano h2");
+  const resolvePopup = document.getElementById("resolveMeIstoPopup");
+
+  resolveCard.forEach((el) => {
+    if (el.textContent.includes("Resolve-me Isto")) {
+      el.parentElement.addEventListener("click", () => {
+        resolvePopup.style.display = "flex";
+      });
+    }
+  });
+
+  function closeResolvePopup() {
+    resolvePopup.style.display = "none";
   }
 </script>
 
