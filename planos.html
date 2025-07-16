@@ -254,6 +254,32 @@
   </div>
   <button class="popup-close" onclick="closePopup()">X</button>
 </div>
+
+<div class="popup-overlay" id="fazIstoAndarPopup">
+  <div class="popup">
+    <h3>Faz Isto Andar</h3>
+    <p><strong>Serviços de estruturação operacional e organização interna, para equipas que já arrancaram mas precisam de consolidar processos.</strong></p>
+    <p>O pacote <strong>Faz Isto Andar</strong> foi pensado para negócios em crescimento que precisam de ganhar consistência, aliviar o peso do fundador e preparar a equipa para trabalhar com mais autonomia.</p>
+    <p>A intervenção foca-se em organizar tarefas, clarificar responsabilidades, criar rotinas eficazes e introduzir ferramentas que tragam clareza, método e escala ao dia a dia da operação.</p>
+    <h4>Os serviços abrangem:</h4>
+    <ul>
+      <li><strong>Mapeamento e documentação de processos-chave</strong>, para garantir que o conhecimento operacional deixa de estar apenas “na cabeça” do fundador;</li>
+      <li>Otimização de tarefas e fluxos internos, com identificação de pontos de fricção e propostas de melhoria concreta;</li>
+      <li>Implementação de ferramentas digitais adequadas às necessidades da equipa (ex.: Notion, Trello, CRM), com configuração inicial e formação básica;</li>
+      <li>Apoio na delegação de tarefas e organização do acompanhamento do trabalho, com foco na definição de responsabilidades, autonomia e reporting.</li>
+    </ul>
+    <p><strong>Inclui também:</strong></p>
+    <ul>
+      <li>Reuniões de diagnóstico e planeamento;</li>
+      <li>Sessões de trabalho com as equipas envolvidas;</li>
+      <li>Entrega de documentação prática e adaptada à realidade do negócio;</li>
+      <li>Disponibilidade para esclarecimentos pontuais ao longo do processo.</li>
+    </ul>
+    <p><strong>Carga horária incluída:</strong> até 20 horas de trabalho distribuídas ao longo de 4 semanas.</p>
+  </div>
+  <button class="popup-close" onclick="closeFazIstoAndarPopup()">X</button>
+</div>
+    
     <h1>Planos de Consultoria Prática para Startups e PMEs</h1>
 
     <p class="intro">
@@ -339,6 +365,23 @@
 
   function closePopup() {
     popup.style.display = "none";
+  }
+</script>
+
+  <script>
+  const fazIstoAndarCard = document.querySelectorAll(".plano h2");
+  const fazIstoAndarPopup = document.getElementById("fazIstoAndarPopup");
+
+  fazIstoAndarCard.forEach((el) => {
+    if (el.textContent.includes("Faz Isto Andar")) {
+      el.parentElement.addEventListener("click", () => {
+        fazIstoAndarPopup.style.display = "flex";
+      });
+    }
+  });
+
+  function closeFazIstoAndarPopup() {
+    fazIstoAndarPopup.style.display = "none";
   }
 </script>
 
