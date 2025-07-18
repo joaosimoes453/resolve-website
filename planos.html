@@ -560,6 +560,105 @@
   }
 </script>
 
+<!-- ResolveBot Chat -->
+<style>
+  #chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffffff;
+    color: #1a1443;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+
+  #chat-window {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-height: 450px;
+    background: #ffffff;
+    color: #1a1443;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    z-index: 9998;
+  }
+
+  .chat-header {
+    background-color: #418c60;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+  }
+
+  .chat-body {
+    padding: 1rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .chat-msg {
+    background: #f0f0f0;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 15px;
+    max-width: 80%;
+  }
+
+  .user-msg {
+    background: #d1ffe0;
+    align-self: flex-end;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 0.5rem;
+    background: #fafafa;
+  }
+
+  .chat-input input {
+    flex: 1;
+    border: none;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .chat-input button {
+    background: #418c60;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+  }
+</style>
+
+<button id="chat-button">💬</button>
+
+<div id="chat-window">
+  <div class="chat-header">ResolveBot</div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
+    <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
+      <button onclick="responde('ideia')">Só uma ideia</button>
+      <button onclick="responde('lancamento')">Lançado recentemente</button>
+      <button onclick="responde('funciona')">Já está a funcionar</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const chatBtn = document.getElementById('chat-button');
   const chatWindow = document.getElementById('chat-window');
@@ -590,7 +689,6 @@
       setTimeout(() => {
         const plano = recomendarPlano(fase, objetivo);
         addBotMessage(`✅ Recomendamos o plano: <strong>${plano}</strong>`);
-        addBotMessage(`<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>`);
       }, 600);
     }
   }
@@ -652,19 +750,6 @@
              objetivo === 'organizacao' ? 'Faz Isto Andar' : 'Resolve-me Isto';
     }
     return 'Faz Isto Andar';
-  }
-
-  function reiniciarConversacao() {
-    chatBody.innerHTML = `
-      <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
-      <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
-        <button onclick="responde('ideia')">Só uma ideia</button>
-        <button onclick="responde('lancamento')">Lançado recentemente</button>
-        <button onclick="responde('funciona')">Já está a funcionar</button>
-      </div>
-    `;
-    fase = '';
-    objetivo = '';
   }
 </script>
   
