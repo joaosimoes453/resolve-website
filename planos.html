@@ -560,20 +560,6 @@
   }
 </script>
 
-<button id="chat-button">💬</button>
-
-<div id="chat-window">
-  <div class="chat-header">ResolveBot</div>
-  <div class="chat-body" id="chat-body">
-    <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
-    <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
-      <button onclick="responde('ideia')">Só uma ideia</button>
-      <button onclick="responde('lancamento')">Lançado recentemente</button>
-      <button onclick="responde('funciona')">Já está a funcionar</button>
-    </div>
-  </div>
-</div>
-
 <script>
   const chatBtn = document.getElementById('chat-button');
   const chatWindow = document.getElementById('chat-window');
@@ -604,6 +590,7 @@
       setTimeout(() => {
         const plano = recomendarPlano(fase, objetivo);
         addBotMessage(`✅ Recomendamos o plano: <strong>${plano}</strong>`);
+        addBotMessage(`<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>`);
       }, 600);
     }
   }
@@ -665,6 +652,19 @@
              objetivo === 'organizacao' ? 'Faz Isto Andar' : 'Resolve-me Isto';
     }
     return 'Faz Isto Andar';
+  }
+
+  function reiniciarConversacao() {
+    chatBody.innerHTML = `
+      <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
+      <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
+        <button onclick="responde('ideia')">Só uma ideia</button>
+        <button onclick="responde('lancamento')">Lançado recentemente</button>
+        <button onclick="responde('funciona')">Já está a funcionar</button>
+      </div>
+    `;
+    fase = '';
+    objetivo = '';
   }
 </script>
   
