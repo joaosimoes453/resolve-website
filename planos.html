@@ -481,57 +481,68 @@
 
   <section id="resolvebot" style="padding: 2rem; background: #f9f9f9; margin-top: 4rem;">
   <h2>👋 ResolveBot</h2>
-  <p>Responde a duas perguntas rápidas e dizemos-te qual o plano ideal para ti.</p>
-  <form id="botForm">
-    <label for="helpType">1. O que procuras?</label><br>
-    <select id="helpType" name="helpType" required>
-      <option value="">Escolhe uma opção</option>
-      <option value="ideia">Validar ou tirar uma ideia do papel</option>
-      <option value="projeto">Fazer o projeto avançar</option>
-      <option value="estrategia">Ajudar a resolver um problema estratégico</option>
-    </select><br><br>
+  <form id="chat-form">
+    <div class="question" id="q1">
+      <p>1. Em que fase está o teu negócio?</p>
+      <label><input type="radio" name="fase" value="ideia"> Ainda é só uma ideia</label>
+      <label><input type="radio" name="fase" value="lancamento"> Estou a lançar ou acabei de lançar</label>
+      <label><input type="radio" name="fase" value="funcionamento"> Já estou em funcionamento</label>
+    </div>
 
-    <label for="budget">2. Quanto estás disponível para investir?</label><br>
-    <select id="budget" name="budget" required>
-      <option value="">Escolhe uma opção</option>
-      <option value="baixo">Menos de 500€</option>
-      <option value="medio">Entre 500€ e 1000€</option>
-      <option value="alto">Mais de 1000€</option>
-    </select><br><br>
+    <div class="question hidden" id="q2">
+      <p>2. O que procuras neste momento?</p>
+      <label><input type="radio" name="apoio" value="estrategia"> Apoio estratégico para tomar decisões</label>
+      <label><input type="radio" name="apoio" value="organizacao"> Ajuda a estruturar processos e organização</label>
+      <label><input type="radio" name="apoio" value="execucao"> Alguém que execute e faça acontecer</label>
+    </div>
 
-    <button type="submit">Ver plano recomendado</button>
+    <div class="question hidden" id="q3">
+      <p>3. Quanto queres estar envolvido na gestão do dia a dia?</p>
+      <label><input type="radio" name="envolvimento" value="muito"> Bastante — quero aprender e implementar</label>
+      <label><input type="radio" name="envolvimento" value="algum"> Algum — quero apoio consistente mas com autonomia</label>
+      <label><input type="radio" name="envolvimento" value="pouco"> Pouco — quero que tratem disso comigo só nas decisões-chave</label>
+    </div>
+
+    <button type="submit" class="hidden" id="submit-btn">Ver recomendação</button>
   </form>
+  <div id="result"></div>
 
-  <div id="result" style="margin-top: 2rem; font-weight: bold;"></div>
+  <script>
+    const form = document.getElementById('chat-form');
+    const q1 = document.getElementById('q1');
+    const q2 = document.getElementById('q2');
+    const q3 = document.getElementById('q3');
+    const submitBtn = document.getElementById('submit-btn');
+    const resultDiv = document.getElementById('result');
+
+    q1.addEventListener('change', () => q2.classList.remove('hidden'));
+    q2.addEventListener('change', () => q3.classList.remove('hidden'));
+    q3.addEventListener('change', () => submitBtn.classList.remove('hidden'));
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fase = form.fase.value;
+      const apoio = form.apoio.value;
+      const envolvimento = form.envolvimento.value;
+
+      let plano = '';
+
+      if (fase === 'ideia') {
+        plano = 'Organiza-me';
+      } else if (fase === 'lancamento' && apoio === 'organizacao') {
+        plano = envolvimento === 'muito' ? 'Organiza-me' : 'Lança-me';
+      } else if (fase === 'funcionamento' && apoio === 'estrategia') {
+        plano = envolvimento === 'muito' ? 'Organiza-me' : 'Faz Isto Andar';
+      } else if (apoio === 'execucao' && envolvimento === 'pouco') {
+        plano = 'Resolve-me Isto';
+      } else {
+        plano = 'Faz Isto Andar';
+      }
+
+      resultDiv.innerHTML = `🧠 Recomendamos o plano: <strong>${plano}</strong>`;
+    });
+  </script>
 </section>
-
-<script>
-  document.getElementById('botForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const helpType = document.getElementById('helpType').value;
-    const budget = document.getElementById('budget').value;
-    const result = document.getElementById('result');
-
-    let recommendation = '';
-
-    if (budget === 'baixo') {
-      recommendation = 'Plano “Organiza-me” (600€ + IVA): Ideal para começar com foco e estrutura.';
-    } else if (budget === 'medio' && helpType === 'ideia') {
-      recommendation = 'Plano “Organiza-me” (600€ + IVA): Começa com foco e estrutura.';
-    } else if (budget === 'medio') {
-      recommendation = 'Plano “Faz isto andar” (1.000€ + IVA): Acompanhamento prático para avançar.';
-    } else if (budget === 'alto' && helpType === 'estrategia') {
-      recommendation = 'Plano “Resolve-me isto” (1.500€ + IVA): Ideal para problemas estratégicos.';
-    } else if (budget === 'alto') {
-      recommendation = 'Plano “Faz isto andar” ou “Resolve-me isto” — depende da profundidade do desafio.';
-    } else {
-      recommendation = 'Com base nas tuas respostas, recomendamos o “Organiza-me”.';
-    }
-
-    result.textContent = recommendation;
-  });
-</script>
   
 </body>
 </html>
