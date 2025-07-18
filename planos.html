@@ -18,6 +18,87 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    #chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffffff;
+    color: #1a1443;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+
+  #chat-window {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-height: 450px;
+    background: #ffffff;
+    color: #1a1443;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    z-index: 9998;
+  }
+
+  .chat-header {
+    background-color: #418c60;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+  }
+
+  .chat-body {
+    padding: 1rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .chat-msg {
+    background: #f0f0f0;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 15px;
+    max-width: 80%;
+  }
+
+  .user-msg {
+    background: #d1ffe0;
+    align-self: flex-end;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 0.5rem;
+    background: #fafafa;
+  }
+
+  .chat-input input {
+    flex: 1;
+    border: none;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .chat-input button {
+    background: #418c60;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+  }
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
@@ -479,59 +560,113 @@
   }
 </script>
 
-<section id="resolvebot" style="padding: 2rem 0; background-color: white; border-top: 1px solid #ddd;">
-  <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-    <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Que plano Resolve é melhor para mim?</h2>
-    
-    <div id="step-1">
-      <label for="objetivo" style="display: block; margin-bottom: 0.5rem;">Qual é o teu principal objetivo?</label>
-      <select id="objetivo" onchange="mostrarPasso2()" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
-        <option value="">Seleciona uma opção</option>
-        <option value="criar_negocio">Criar um negócio do zero</option>
-        <option value="fazer_crescer">Fazer crescer um projeto que já tenho</option>
-      </select>
-    </div>
+<button id="chat-button">💬</button>
 
-    <div id="step-2" style="margin-top: 1.5rem; display: none;">
-      <label for="autonomia" style="display: block; margin-bottom: 0.5rem;">Queres fazer tudo com autonomia ou preferes apoio regular?</label>
-      <select id="autonomia" onchange="mostrarSugestao()" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
-        <option value="">Seleciona uma opção</option>
-        <option value="autonomia">Quero autonomia</option>
-        <option value="apoio">Quero apoio regular</option>
-      </select>
+<div id="chat-window">
+  <div class="chat-header">ResolveBot</div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
+    <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
+      <button onclick="responde('ideia')">Só uma ideia</button>
+      <button onclick="responde('lancamento')">Lançado recentemente</button>
+      <button onclick="responde('funciona')">Já está a funcionar</button>
     </div>
-
-    <div id="sugestao" style="margin-top: 2rem; font-weight: bold;"></div>
   </div>
-</section>
+</div>
 
 <script>
-  function mostrarPasso2() {
-    const objetivo = document.getElementById('objetivo').value;
-    const step2 = document.getElementById('step-2');
-    const sugestao = document.getElementById('sugestao');
-    sugestao.innerHTML = '';
-    if (objetivo !== '') step2.style.display = 'block';
-    else step2.style.display = 'none';
-  }
+  const chatBtn = document.getElementById('chat-button');
+  const chatWindow = document.getElementById('chat-window');
+  const chatBody = document.getElementById('chat-body');
 
-  function mostrarSugestao() {
-    const objetivo = document.getElementById('objetivo').value;
-    const autonomia = document.getElementById('autonomia').value;
-    const sugestao = document.getElementById('sugestao');
+  let fase = '';
+  let objetivo = '';
 
-    if (objetivo && autonomia) {
-      let plano = '';
-      if (objetivo === 'criar_negocio' && autonomia === 'autonomia') plano = 'Organiza-me';
-      else if (objetivo === 'criar_negocio' && autonomia === 'apoio') plano = 'Faz isto andar';
-      else if (objetivo === 'fazer_crescer' && autonomia === 'autonomia') plano = 'Foco';
-      else if (objetivo === 'fazer_crescer' && autonomia === 'apoio') plano = 'Vamos com tudo';
+  chatBtn.onclick = () => {
+    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+  };
 
-      sugestao.innerHTML = `✨ O plano mais adequado é: <strong>${plano}</strong>.`;
+  function responde(valor) {
+    if (!fase) {
+      fase = valor;
+      addUserMessage(getLabelFase(valor));
+      setTimeout(() => {
+        addBotMessage(`2️⃣ E o que estás à procura?`);
+        addBotButtons([
+          { text: 'Estratégia e decisões', value: 'estrategia' },
+          { text: 'Organizar e estruturar', value: 'organizacao' },
+          { text: 'Execução prática', value: 'execucao' }
+        ]);
+      }, 600);
+    } else if (!objetivo) {
+      objetivo = valor;
+      addUserMessage(getLabelObjetivo(valor));
+      setTimeout(() => {
+        const plano = recomendarPlano(fase, objetivo);
+        addBotMessage(`✅ Recomendamos o plano: <strong>${plano}</strong>`);
+      }, 600);
     }
   }
-</script>
 
+  function addUserMessage(text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg user-msg';
+    div.innerText = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addBotMessage(html) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    div.innerHTML = html;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addBotButtons(buttons) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    buttons.forEach(btn => {
+      const b = document.createElement('button');
+      b.innerText = btn.text;
+      b.style.margin = '0.2rem';
+      b.onclick = () => responde(btn.value);
+      div.appendChild(b);
+    });
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function getLabelFase(val) {
+    return {
+      ideia: "Só tenho uma ideia",
+      lancamento: "Acabei de lançar",
+      funciona: "Já está a funcionar"
+    }[val];
+  }
+
+  function getLabelObjetivo(val) {
+    return {
+      estrategia: "Quero apoio estratégico",
+      organizacao: "Preciso de estrutura e organização",
+      execucao: "Quero ajuda prática na execução"
+    }[val];
+  }
+
+  function recomendarPlano(fase, objetivo) {
+    if (fase === 'ideia') return 'Lança-me';
+    if (fase === 'lancamento') {
+      return objetivo === 'organizacao' ? 'Organiza-me' :
+             objetivo === 'estrategia' ? 'Lança-me' : 'Organiza-me';
+    }
+    if (fase === 'funciona') {
+      return objetivo === 'execucao' ? 'Resolve-me Isto' :
+             objetivo === 'organizacao' ? 'Faz Isto Andar' : 'Resolve-me Isto';
+    }
+    return 'Faz Isto Andar';
+  }
+</script>
   
 </body>
 </html>
