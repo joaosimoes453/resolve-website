@@ -621,27 +621,11 @@
     align-self: flex-end;
   }
 
-  .chat-input {
-    display: flex;
-    border-top: 1px solid #ddd;
-    padding: 0.5rem;
-    background: #fafafa;
-  }
-
-  .chat-input input {
-    flex: 1;
-    border: none;
-    padding: 0.6rem;
-    font-family: inherit;
-    font-size: 1rem;
-  }
-
-  .chat-input button {
-    background: #418c60;
-    color: white;
-    border: none;
-    padding: 0.6rem 1rem;
+  .popup-link {
+    color: #1877f2;
+    text-decoration: underline;
     cursor: pointer;
+    font-weight: bold;
   }
 </style>
 
@@ -667,6 +651,13 @@
   let fase = '';
   let objetivo = '';
 
+  const planos = [
+    { nome: 'Lança-me', id: 'popup-lanca-me' },
+    { nome: 'Organiza-me', id: 'popup-organiza-me' },
+    { nome: 'Resolve-me Isto', id: 'popup-resolve-me-isto' },
+    { nome: 'Faz Isto Andar', id: 'popup-faz-isto-andar' }
+  ];
+
   chatBtn.onclick = () => {
     chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
   };
@@ -688,7 +679,12 @@
       addUserMessage(getLabelObjetivo(valor));
       setTimeout(() => {
         const plano = recomendarPlano(fase, objetivo);
-        addBotMessage(`✅ Recomendamos o plano: <strong>${plano}</strong>`);
+        const popup = planos.find(p => p.nome === plano);
+        const link = popup
+          ? `<span class="popup-link" data-popup-id="${popup.id}">${plano}</span>`
+          : plano;
+
+        addBotMessage(`✅ Recomendamos o plano: ${link}`);
         addBotMessage(`<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>`);
       }, 600);
     }
@@ -765,6 +761,15 @@
     fase = '';
     objetivo = '';
   }
+
+  // Abre popup ao clicar no nome do plano
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('popup-link')) {
+      const popupId = e.target.dataset.popupId;
+      const trigger = document.querySelector(`.open-popup[data-popup-target="#${popupId}"]`);
+      if (trigger) trigger.click();
+    }
+  });
 </script>
   
 </body>
