@@ -676,7 +676,7 @@
       fase = valor;
       addUserMessage(getLabelFase(valor));
       setTimeout(() => {
-        addBotMessage(2️⃣ E o que estás à procura?);
+        addBotMessage(`2️⃣ E o que estás à procura?`);
         addBotButtons([
           { text: 'Estratégia e decisões', value: 'estrategia' },
           { text: 'Organizar e estruturar', value: 'organizacao' },
@@ -688,8 +688,7 @@
       addUserMessage(getLabelObjetivo(valor));
       setTimeout(() => {
         const plano = recomendarPlano(fase, objetivo);
-        addBotMessage(✅ Recomendamos o plano: <strong>${plano}</strong>);
-        addBotMessage(<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>);
+        addBotMessage(`✅ Recomendamos o plano: <strong>${plano}</strong>`);
       }, 600);
     }
   }
@@ -751,19 +750,6 @@
              objetivo === 'organizacao' ? 'Faz Isto Andar' : 'Resolve-me Isto';
     }
     return 'Faz Isto Andar';
-  }
-
-  function reiniciarConversacao() {
-    chatBody.innerHTML = 
-      <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
-      <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
-        <button onclick="responde('ideia')">Só uma ideia</button>
-        <button onclick="responde('lancamento')">Lançado recentemente</button>
-        <button onclick="responde('funciona')">Já está a funcionar</button>
-      </div>
-    ;
-    fase = '';
-    objetivo = '';
   }
 </script>
   
