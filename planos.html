@@ -478,6 +478,60 @@
     lancaPopup.style.display = "none";
   }
 </script>
+
+<section id="resolvebot" style="padding: 2rem 0; background-color: white; border-top: 1px solid #ddd;">
+  <div style="max-width: 600px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Que plano Resolve é melhor para mim?</h2>
+    
+    <div id="step-1">
+      <label for="objetivo" style="display: block; margin-bottom: 0.5rem;">Qual é o teu principal objetivo?</label>
+      <select id="objetivo" onchange="mostrarPasso2()" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+        <option value="">Seleciona uma opção</option>
+        <option value="criar_negocio">Criar um negócio do zero</option>
+        <option value="fazer_crescer">Fazer crescer um projeto que já tenho</option>
+      </select>
+    </div>
+
+    <div id="step-2" style="margin-top: 1.5rem; display: none;">
+      <label for="autonomia" style="display: block; margin-bottom: 0.5rem;">Queres fazer tudo com autonomia ou preferes apoio regular?</label>
+      <select id="autonomia" onchange="mostrarSugestao()" style="width: 100%; padding: 0.5rem; font-size: 1rem;">
+        <option value="">Seleciona uma opção</option>
+        <option value="autonomia">Quero autonomia</option>
+        <option value="apoio">Quero apoio regular</option>
+      </select>
+    </div>
+
+    <div id="sugestao" style="margin-top: 2rem; font-weight: bold;"></div>
+  </div>
+</section>
+
+<script>
+  function mostrarPasso2() {
+    const objetivo = document.getElementById('objetivo').value;
+    const step2 = document.getElementById('step-2');
+    const sugestao = document.getElementById('sugestao');
+    sugestao.innerHTML = '';
+    if (objetivo !== '') step2.style.display = 'block';
+    else step2.style.display = 'none';
+  }
+
+  function mostrarSugestao() {
+    const objetivo = document.getElementById('objetivo').value;
+    const autonomia = document.getElementById('autonomia').value;
+    const sugestao = document.getElementById('sugestao');
+
+    if (objetivo && autonomia) {
+      let plano = '';
+      if (objetivo === 'criar_negocio' && autonomia === 'autonomia') plano = 'Organiza-me';
+      else if (objetivo === 'criar_negocio' && autonomia === 'apoio') plano = 'Faz isto andar';
+      else if (objetivo === 'fazer_crescer' && autonomia === 'autonomia') plano = 'Foco';
+      else if (objetivo === 'fazer_crescer' && autonomia === 'apoio') plano = 'Vamos com tudo';
+
+      sugestao.innerHTML = `✨ O plano mais adequado é: <strong>${plano}</strong>.`;
+    }
+  }
+</script>
+
   
 </body>
 </html>
