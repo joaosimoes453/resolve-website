@@ -621,11 +621,27 @@
     align-self: flex-end;
   }
 
-  .popup-link {
-    color: #1877f2;
-    text-decoration: underline;
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 0.5rem;
+    background: #fafafa;
+  }
+
+  .chat-input input {
+    flex: 1;
+    border: none;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .chat-input button {
+    background: #418c60;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
     cursor: pointer;
-    font-weight: bold;
   }
 </style>
 
@@ -651,13 +667,6 @@
   let fase = '';
   let objetivo = '';
 
-  const planos = [
-    { nome: 'Lança-me', id: 'lancaMePopup' },
-    { nome: 'Organiza-me', id: 'organizaPopup' },
-    { nome: 'Resolve-me Isto', id: 'resolveMeIstoPopup' },
-    { nome: 'Faz Isto Andar', id: 'fazIstoAndarPopup' }
-  ];
-
   chatBtn.onclick = () => {
     chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
   };
@@ -667,7 +676,7 @@
       fase = valor;
       addUserMessage(getLabelFase(valor));
       setTimeout(() => {
-        addBotMessage(`2️⃣ E o que estás à procura?`);
+        addBotMessage(2️⃣ E o que estás à procura?);
         addBotButtons([
           { text: 'Estratégia e decisões', value: 'estrategia' },
           { text: 'Organizar e estruturar', value: 'organizacao' },
@@ -679,13 +688,8 @@
       addUserMessage(getLabelObjetivo(valor));
       setTimeout(() => {
         const plano = recomendarPlano(fase, objetivo);
-        const popup = planos.find(p => p.nome === plano);
-        const link = popup
-          ? `<span class="popup-link" data-popup-id="${popup.id}">${plano}</span>`
-          : plano;
-
-        addBotMessage(`✅ Recomendamos o plano: ${link}`);
-        addBotMessage(`<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>`);
+        addBotMessage(✅ Recomendamos o plano: <strong>${plano}</strong>);
+        addBotMessage(<button onclick="reiniciarConversacao()">✏️ Alterar respostas</button>);
       }, 600);
     }
   }
@@ -750,26 +754,17 @@
   }
 
   function reiniciarConversacao() {
-    chatBody.innerHTML = `
+    chatBody.innerHTML = 
       <div class="chat-msg">Olá! 👋 Vamos encontrar o plano certo para ti.</div>
       <div class="chat-msg">1️⃣ Qual é o estado do teu negócio?<br>
         <button onclick="responde('ideia')">Só uma ideia</button>
         <button onclick="responde('lancamento')">Lançado recentemente</button>
         <button onclick="responde('funciona')">Já está a funcionar</button>
       </div>
-    `;
+    ;
     fase = '';
     objetivo = '';
   }
-
-  // Abre popup ao clicar no nome do plano
-  document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('popup-link')) {
-      const popupId = e.target.dataset.popupId;
-      const trigger = document.querySelector(`.open-popup[data-popup-target="#${popupId}"]`);
-      if (trigger) trigger.click();
-    }
-  });
 </script>
   
 </body>
