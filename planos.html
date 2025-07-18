@@ -479,5 +479,59 @@
   }
 </script>
 
+  <section id="resolvebot" style="padding: 2rem; background: #f9f9f9; margin-top: 4rem;">
+  <h2>👋 ResolveBot</h2>
+  <p>Responde a duas perguntas rápidas e dizemos-te qual o plano ideal para ti.</p>
+  <form id="botForm">
+    <label for="helpType">1. O que procuras?</label><br>
+    <select id="helpType" name="helpType" required>
+      <option value="">Escolhe uma opção</option>
+      <option value="ideia">Validar ou tirar uma ideia do papel</option>
+      <option value="projeto">Fazer o projeto avançar</option>
+      <option value="estrategia">Ajudar a resolver um problema estratégico</option>
+    </select><br><br>
+
+    <label for="budget">2. Quanto estás disponível para investir?</label><br>
+    <select id="budget" name="budget" required>
+      <option value="">Escolhe uma opção</option>
+      <option value="baixo">Menos de 500€</option>
+      <option value="medio">Entre 500€ e 1000€</option>
+      <option value="alto">Mais de 1000€</option>
+    </select><br><br>
+
+    <button type="submit">Ver plano recomendado</button>
+  </form>
+
+  <div id="result" style="margin-top: 2rem; font-weight: bold;"></div>
+</section>
+
+<script>
+  document.getElementById('botForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const helpType = document.getElementById('helpType').value;
+    const budget = document.getElementById('budget').value;
+    const result = document.getElementById('result');
+
+    let recommendation = '';
+
+    if (budget === 'baixo') {
+      recommendation = 'Plano “Organiza-me” (600€ + IVA): Ideal para começar com foco e estrutura.';
+    } else if (budget === 'medio' && helpType === 'ideia') {
+      recommendation = 'Plano “Organiza-me” (600€ + IVA): Começa com foco e estrutura.';
+    } else if (budget === 'medio') {
+      recommendation = 'Plano “Faz isto andar” (1.000€ + IVA): Acompanhamento prático para avançar.';
+    } else if (budget === 'alto' && helpType === 'estrategia') {
+      recommendation = 'Plano “Resolve-me isto” (1.500€ + IVA): Ideal para problemas estratégicos.';
+    } else if (budget === 'alto') {
+      recommendation = 'Plano “Faz isto andar” ou “Resolve-me isto” — depende da profundidade do desafio.';
+    } else {
+      recommendation = 'Com base nas tuas respostas, recomendamos o “Organiza-me”.';
+    }
+
+    result.textContent = recommendation;
+  });
+</script>
+  
 </body>
 </html>
