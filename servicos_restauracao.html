@@ -12,23 +12,25 @@
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      text-align: center;
       background-color: #418c60;
       color: #ffffff;
       margin: 0;
-      padding: 2rem;
+      padding: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     nav {
+      width: 100%;
+      padding: 1.5rem 0;
       display: flex;
       justify-content: center;
+      gap: 2rem;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      box-sizing: border-box;
     }
 
     nav a {
@@ -44,55 +46,58 @@
       text-decoration: underline;
     }
 
+    .container {
+      max-width: 700px;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+
     img {
-      width: 200px;
-      margin-bottom: 1rem;
+      width: 180px;
+      margin-bottom: 2rem;
+      align-self: center;
     }
 
     h1 {
       color: #1a1443;
       font-size: 2rem;
-      margin-bottom: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      line-height: 1.2;
     }
 
     h2 {
       color: #ffffff;
       font-size: 1.3rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.7rem;
     }
 
     p {
-      max-width: 800px;
-      margin-bottom: 1.2rem;
+      max-width: 100%;
+      margin-bottom: 1.3rem;
       font-size: 1rem;
       line-height: 1.6;
-      color: #ffffff;
-    }
-
-    ul {
-      max-width: 800px;
-      text-align: left;
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      list-style-type: disc;
-    }
-
-    li {
-      margin-bottom: 0.8rem;
-      font-size: 1rem;
+      color: #ffffffcc;
     }
 
     .cta {
       background-color: #ffffff;
       color: #1a1443;
-      padding: 12px 24px;
+      padding: 14px 28px;
       text-decoration: none;
       border-radius: 5px;
       font-weight: 600;
       transition: background-color 0.3s;
+      margin-top: 2rem;
+      align-self: center;
       display: inline-block;
-      margin-top: 1.5rem;
     }
 
     .cta:hover {
@@ -100,30 +105,46 @@
     }
 
     footer {
-      margin-top: 3rem;
-      color: #ffffffb3;
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem 0;
       font-size: 0.9rem;
+      color: #ffffffb3;
+      background-color: #36744a;
+      margin-top: auto;
     }
 
+    /* Responsivo */
     @media (max-width: 600px) {
-      body {
-        padding: 1.5rem;
-      }
-
-      nav a {
-        font-size: 0.95rem;
+      .container {
+        padding: 1.5rem 1rem;
       }
 
       img {
-        width: 150px;
+        width: 140px;
+        margin-bottom: 1.5rem;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
       }
 
-      p, li {
+      h2 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
         font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .cta {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 0;
       }
     }
   </style>
@@ -138,30 +159,32 @@
   </nav>
 
   <!-- Conteúdo principal -->
-  <img src="resolve_restauracao.jpg" alt="Resolve Restauração Logo" />
-  <h1>Serviços de Consultoria para Restaurantes e Bares</h1>
+  <main class="container" role="main">
+    <img src="resolve_restauracao.jpg" alt="Resolve Restauração Logo" />
+    <h1>Serviços de Consultoria para Restaurantes e Bares</h1>
 
-  <p>Na Resolve Restauração, trabalhamos lado a lado com proprietários e gestores para transformar operações sobrecarregadas em negócios organizados, lucrativos e prontos para crescer. Aqui encontra as áreas onde podemos intervir para gerar resultados reais.</p>
+    <p>Na Resolve Restauração, trabalhamos lado a lado com proprietários e gestores para transformar operações sobrecarregadas em negócios organizados, lucrativos e prontos para crescer. Aqui encontra as áreas onde podemos intervir para gerar resultados reais.</p>
 
-  <h2>Organização e Eficiência Operacional</h2>
-  <p>Mapeamos processos, reduzimos desperdícios e otimizamos turnos para que a operação funcione com menos esforço e mais previsibilidade.</p>
+    <h2>Organização e Eficiência Operacional</h2>
+    <p>Mapeamos processos, reduzimos desperdícios e otimizamos turnos para que a operação funcione com menos esforço e mais previsibilidade.</p>
 
-  <h2>Gestão e Formação de Equipas</h2>
-  <p>Recrutamos, integramos e formamos equipas, criando uma cultura de motivação, autonomia e responsabilidade.</p>
+    <h2>Gestão e Formação de Equipas</h2>
+    <p>Recrutamos, integramos e formamos equipas, criando uma cultura de motivação, autonomia e responsabilidade.</p>
 
-  <h2>Rentabilidade e Controlo Financeiro</h2>
-  <p>Analisamos custos, margens e preços para garantir que cada venda contribui para o lucro e não apenas para a faturação.</p>
+    <h2>Rentabilidade e Controlo Financeiro</h2>
+    <p>Analisamos custos, margens e preços para garantir que cada venda contribui para o lucro e não apenas para a faturação.</p>
 
-  <h2>Desenvolvimento e Expansão</h2>
-  <p>Seja para abrir uma nova unidade, criar um conceito inovador ou expandir em regime de franchising, acompanhamos todo o processo de forma estratégica.</p>
+    <h2>Desenvolvimento e Expansão</h2>
+    <p>Seja para abrir uma nova unidade, criar um conceito inovador ou expandir em regime de franchising, acompanhamos todo o processo de forma estratégica.</p>
 
-  <h2>Mentoria e Apoio ao Gestor</h2>
-  <p>Oferecemos acompanhamento direto para quem lidera, ajudando a tomar decisões mais rápidas e acertadas.</p>
+    <h2>Mentoria e Apoio ao Gestor</h2>
+    <p>Oferecemos acompanhamento direto para quem lidera, ajudando a tomar decisões mais rápidas e acertadas.</p>
 
-  <a class="cta" href="mailto:geral@resolveconsulting.pro">Quero melhorar o meu restaurante</a>
+    <a class="cta" href="mailto:geral@resolveconsulting.pro">Quero melhorar o meu restaurante</a>
+  </main>
 
   <footer>
-    &copy; 2025 Resolve
+    &copy; 2025 Resolve Restauração
   </footer>
 
 </body>
