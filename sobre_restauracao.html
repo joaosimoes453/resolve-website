@@ -6,29 +6,30 @@
   <title>Sobre a Resolve Restauração • Consultoria para Restaurantes e Bares</title>
   <meta name="description" content="Conheça a Resolve Restauração: consultoria especializada em restaurantes, bares e negócios gastronómicos. Ajudamos a organizar operações, formar equipas e aumentar a rentabilidade." />
   <link rel="icon" href="web-app-manifest-192x192.png" type="image/png" />
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      text-align: center;
       background-color: #418c60;
       color: #ffffff;
       margin: 0;
-      padding: 2rem;
+      padding: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     nav {
+      width: 100%;
+      padding: 1.5rem 0;
       display: flex;
       justify-content: center;
+      gap: 2rem;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      box-sizing: border-box;
     }
 
     nav a {
@@ -44,58 +45,86 @@
       text-decoration: underline;
     }
 
+    .container {
+      max-width: 700px;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     img {
-      width: 200px;
-      margin-bottom: 1rem;
+      width: 180px;
+      margin-bottom: 2rem;
     }
 
     h1 {
       color: #1a1443;
       font-size: 2rem;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
     }
 
     h2 {
       color: #1a1443;
       font-size: 1.4rem;
-      margin-top: 2rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
       margin-bottom: 1rem;
+      align-self: flex-start;
+      width: 100%;
+      text-align: left;
     }
 
     p {
-      max-width: 800px;
+      max-width: 100%;
       margin-bottom: 1.5rem;
       font-size: 1rem;
       line-height: 1.6;
+      color: #ffffffcc;
+      text-align: left;
+    }
+
+    p strong {
       color: #ffffff;
     }
 
     footer {
-      margin-top: 3rem;
-      color: #ffffffb3;
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem 0;
       font-size: 0.9rem;
+      color: #ffffffb3;
+      background-color: #36744a;
+      margin-top: auto;
     }
 
+    /* Responsivo */
     @media (max-width: 600px) {
-      body {
-        padding: 1.5rem;
-      }
-
-      nav a {
-        font-size: 0.95rem;
+      .container {
+        padding: 1.5rem 1rem;
       }
 
       img {
-        width: 150px;
+        width: 140px;
+        margin-bottom: 1.5rem;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
       }
 
       p {
         font-size: 0.95rem;
-        padding: 0 1rem;
+        margin-bottom: 1.25rem;
       }
     }
   </style>
@@ -110,21 +139,23 @@
   </nav>
 
   <!-- Conteúdo principal -->
-  <img src="resolve_restauracao.jpg" alt="Logo da Resolve Restauração - Consultoria para Restaurantes e Bares" />
-  <h1>Sobre a Resolve Restauração</h1>
+  <main class="container" role="main">
+    <img src="resolve_restauracao.jpg" alt="Logo da Resolve Restauração - Consultoria para Restaurantes e Bares" />
+    <h1>Sobre a Resolve Restauração</h1>
 
-  <p><strong>Consultoria especializada para restaurantes, bares e negócios gastronómicos</strong> que querem sair da sobrevivência e entrar na gestão inteligente.</p>
+    <p><strong>Consultoria especializada para restaurantes, bares e negócios gastronómicos</strong> que querem sair da sobrevivência e entrar na gestão inteligente.</p>
 
-  <p>A nossa missão é ajudar negócios da restauração a tornarem-se sustentáveis, organizados e liderados com visão. Entramos como braço direito da gestão, criando estrutura, clareza e foco em operações que vivem em constante urgência.</p>
+    <p>A nossa missão é ajudar negócios da restauração a tornarem-se sustentáveis, organizados e liderados com visão. Entramos como braço direito da gestão, criando estrutura, clareza e foco em operações que vivem em constante urgência.</p>
 
-  <h2>Porque existimos</h2>
-  <p>Sabemos que muitos restaurantes operam no limite: margens curtas, equipas desmotivadas, falta de processos, donos exaustos e sempre a apagar fogos. A Resolve entra para simplificar, libertar quem gere e dar tração ao negócio.</p>
+    <h2>Porque existimos</h2>
+    <p>Sabemos que muitos restaurantes operam no limite: margens curtas, equipas desmotivadas, falta de processos, donos exaustos e sempre a apagar fogos. A Resolve entra para simplificar, libertar quem gere e dar tração ao negócio.</p>
 
-  <h2>Como trabalhamos</h2>
-  <p>Não somos auditores nem consultores de gabinete. Trabalhamos no terreno, lado a lado com quem gere, para implementar soluções práticas que funcionam no dia-a-dia. Organizamos equipas, afinamos processos e ajudamos líderes a ganhar tempo e rentabilidade.</p>
+    <h2>Como trabalhamos</h2>
+    <p>Não somos auditores nem consultores de gabinete. Trabalhamos no terreno, lado a lado com quem gere, para implementar soluções práticas que funcionam no dia-a-dia. Organizamos equipas, afinamos processos e ajudamos líderes a ganhar tempo e rentabilidade.</p>
 
-  <h2>O que nos move</h2>
-  <p>Se a sua operação precisa de ordem, clareza e resultados, a <strong>Resolve Restauração</strong> é a parceira certa para pôr tudo a andar.</p>
+    <h2>O que nos move</h2>
+    <p>Se a sua operação precisa de ordem, clareza e resultados, a <strong>Resolve Restauração</strong> é a parceira certa para pôr tudo a andar.</p>
+  </main>
 
   <footer>
     &copy; 2025 Resolve Restauração
